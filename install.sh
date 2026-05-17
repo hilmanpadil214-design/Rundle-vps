@@ -8,7 +8,7 @@ NC='\033[0m' # No Color
 
 # Mengambil IP Public VPS secara otomatis
 MYIP=$(wget -qO- icanhazip.com; echo "127.0.0.1")
-DOMAIN="bisa.diisi.domain.kamu" # Nanti bisa kamu ganti sesuai domainmu
+DOMAIN="superlancar.biz.id"
 
 # Fungsi untuk Menu Utama
 main_menu() {
@@ -74,31 +74,4 @@ create_zivpn_account() {
     read -p " Expired (Hari): " masa_aktif
 
     # Perintah Linux untuk membuat user asli di sistem VPS
-    useradd -e $(date -d "$masa_aktif days" +"%Y-%m-%d") -s /bin/false "$user"
-    echo "$user:$vpn_password" | chpasswd
-
-    # Menghitung tanggal kadaluarsa
-    exp_date=$(date -d "$masa_aktif days" +"%d-%b-%Y")
-
-    # Menampilkan detail akun lengkap yang bisa dicopas user
-    clear
-    echo -e "${GREEN}=======================================${NC}"
-    echo -e "      ZIVPN / SSH ACCOUNT DETAILS      "
-    echo -e "=======================================${NC}"
-    echo -e " Host/IP   : $MYIP"
-    echo -e " Domain    : $DOMAIN"
-    echo -e " Username  : $user"
-    echo -e " Password  : $vpn_password"
-    echo -e " Created   : $(date +"%d-%b-%Y")"
-    echo -e " Expired   : $exp_date ($masa_aktif Hari)"
-    echo -e "=======================================${NC}"
-    echo -e " Port SSH  : 22, 143"
-    echo -e " Port Drop : 109, 7300"
-    echo -e "${GREEN}=======================================${NC}"
-    
-    read -p "Tekan [Enter] untuk kembali ke menu..."
-    main_menu
-}
-
-# Menjalankan menu utama saat script dieksekusi
-main_menu
+    useradd -e $(date -d "$masa_aktif days" +"%Y
